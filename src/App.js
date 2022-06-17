@@ -1,9 +1,20 @@
 import './App.css';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Header from './containers/Header';
+import ProductListing from './containers/ProductListing';
+import ProductDetail from './containers/ProductDetail';
 
 function App() {
   return (
     <div className="App">
-      Hello World!
+      <Router>
+        <Header />
+        <Switch>
+          <Route exact path='/' component={ProductListing} />
+          <Route path='/product/:id' component={ProductDetail} />
+          <Route>404 Not Found!</Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
